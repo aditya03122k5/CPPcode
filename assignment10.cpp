@@ -46,3 +46,40 @@
 // {
 // return 0;
 // } 
+
+#include<iostream>
+using namespace std;
+
+int fnAdd(int a, int b) {
+    return a + b;
+}
+int fnMultiply(int a, int b) {
+    return a * b;
+}
+int fnDivide(int a, int b) {
+    if (b != 0)
+        return a / b;
+    else {
+        cout << "Error: Division by zero!" << endl;
+        return 0; // Return 0 or handle error as needed
+    }
+}
+int fnSubtract(int a, int b) {
+    return a - b;
+}
+int main() {
+    // Declare an array of function pointers
+    int (*fnptr[4])(int, int) = {fnAdd, fnMultiply, fnDivide, fnSubtract};
+
+    int a, b;
+    cout << "Enter two integers: ";
+    cin >> a >> b;
+
+    // Call each function using the function pointers in the array
+    cout << "Addition: " << fnptr[0](a, b) << endl;
+    cout << "Multiplication: " << fnptr[1](a, b) << endl;
+    cout << "Division: " << fnptr[2](a, b) << endl;
+    cout << "Subtraction: " << fnptr[3](a, b) << endl;
+
+    return 0;
+}
